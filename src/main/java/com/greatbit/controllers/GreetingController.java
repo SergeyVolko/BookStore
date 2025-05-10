@@ -1,5 +1,6 @@
 package com.greatbit.controllers;
 
+import com.greatbit.models.BookStorage;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,5 +14,11 @@ public class GreetingController {
                            Model model) {
         model.addAttribute("name", name);
         return "greeting";
+    }
+
+    @GetMapping("/book_list")
+    public String getBooks(Model model) {
+        model.addAttribute("books", BookStorage.getBooks());
+        return "books";
     }
 }
